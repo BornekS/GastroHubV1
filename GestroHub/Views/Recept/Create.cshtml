@@ -1,0 +1,42 @@
+﻿@model GestroHub.Models.Recept
+@{
+    ViewBag.Title = "Dodaj recept";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="mb-4">📝 Dodaj novi recept</h2>
+
+    @using (Html.BeginForm("Create", "Recept", FormMethod.Post))
+    {
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Naziv)
+            @Html.TextBoxFor(m => m.Naziv, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Naziv)
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Opis)
+            @Html.TextAreaFor(m => m.Opis, new { @class = "form-control", rows = 4 })
+            @Html.ValidationMessageFor(m => m.Opis)
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Kategorija")
+            @Html.TextBoxFor(m => m.Kategorija, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Slika (putanja ili naziv datoteke)")
+            @Html.TextBoxFor(m => m.SlikaPutanja, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.NamirniceInput)
+            @Html.TextBoxFor(m => m.NamirniceInput, new { @class = "form-control", placeholder = "npr. jaja, mlijeko, sir" })
+        </div>
+
+        <button type="submit" class="btn btn-success">Spremi recept</button>
+    }
+
+    <a href="@Url.Action("Moji", "Recept")" class="btn btn-secondary mt-3">Natrag</a>
+</div>

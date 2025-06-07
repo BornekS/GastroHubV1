@@ -1,0 +1,41 @@
+﻿@model GestroHub.Models.Recept
+@{
+    ViewBag.Title = "Uredi recept";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="mb-4">✏️ Uredi recept</h2>
+
+    @using (Html.BeginForm("Edit", "Recept", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Naziv)
+            @Html.TextBoxFor(m => m.Naziv, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Opis)
+            @Html.TextAreaFor(m => m.Opis, new { @class = "form-control", rows = 4 })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Kategorija")
+            @Html.TextBoxFor(m => m.Kategorija, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Slika")
+            @Html.TextBoxFor(m => m.SlikaPutanja, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.NamirniceInput)
+            @Html.TextBoxFor(m => m.NamirniceInput, new { @class = "form-control", placeholder = "npr. jaja, mlijeko, sir" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Spremi promjene</button>
+        <a href="@Url.Action("Moji", "Recept")" class="btn btn-secondary ms-2">Natrag</a>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model List<GestroHub.Models.Recept>
+@{
+    ViewBag.Title = "Pretraži po namirnicama";
+    var sveNamirnice = ViewBag.SveNamirnice as List<string>;
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">🛒 Pretraži recepte po namirnicama</h2>
+
+    @using (Html.BeginForm("SearchNamirnice", "Recept", FormMethod.Post))
+    {
+        <div class="mb-4">
+            <label>Odaberi namirnice koje imaš:</label>
+            <div class="row">
+                @foreach (var namirnica in sveNamirnice)
+                {
+                    <div class="col-md-3">
+                        <div class="form-check">
+                            <input type="checkbox" name="odabraneNamirnice" value="@namirnica" class="form-check-input" id="@namirnica" />
+                            <label class="form-check-label" for="@namirnica">@namirnica</label>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Pretraži</button>
+    }
+
+    <hr />
+
+    @if (Model == null || !Model.GetEnumerator().MoveNext())
+    {
+        <h4 class="mt-4">🔍 Rezultati:</h4>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+            @foreach (var r in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="@Url.Content("~/Content/images/" + r.SlikaPutanja)" class="card-img-top" style="height: 200px; object-fit: cover;" />
+                        <div class="card-body">
+                            <h5>@r.Naziv</h5>
+                            <p>@r.Opis</p>
+                            <small class="text-muted">@string.Join(", ", r.Namirnice)</small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else if (Model != null)
+    {
+        <p class="mt-4 text-muted">Nema recepata za odabrane namirnice.</p>
+    }
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary mt-4">🏠 Natrag na početnu</a>
+
+</div>

@@ -4,6 +4,7 @@ namespace GestroHub.Models
 { 
 public class Korisnik
 {
+        [Key]
     public int Id { get; set; }
 
     [Required]

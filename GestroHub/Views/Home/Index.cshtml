@@ -90,8 +90,8 @@
                 👤
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">👤 Osobni podaci</a></li>
-                <li><a class="dropdown-item" href="#">📋 Moji recepti</a></li>
+                <li><a class="dropdown-item" href="/Korisnik/Profil">👤 Osobni podaci</a></li>
+                <li><a class="dropdown-item" href="/Recept/Moji">📋 Moji recepti</a></li>
                 <li><a class="dropdown-item" href="/Account/Logout">🚪 Odjava</a></li>
             </ul>
         </div>
@@ -100,10 +100,12 @@
 <div class="center-container">
 
 
-    <form method="get" class="search-bar">
-        <input type="text" name="naziv" class="form-control" placeholder="Pretraži recept..." />
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+    <div class="search-bar">
+        <input type="text" class="form-control" placeholder="Pretraži recept..." />
+        <button class="btn btn-primary me-2">Search</button>
+
+        <a href="@Url.Action("SearchNamirnice", "Recept")" class="btn btn-outline-secondary">🔎 Napredno</a>
+    </div>
     @if (Model == null || !Model.GetEnumerator().MoveNext())
     {
         <p>Nema pronađenih recepata.</p>

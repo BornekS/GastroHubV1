@@ -18,6 +18,8 @@ namespace GestroHub
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var ensureDLLIsCopied = typeof(MySql.Data.MySqlClient.MySqlClientFactory).ToString();
         }
     }
 }

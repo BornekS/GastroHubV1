@@ -1,0 +1,18 @@
+﻿@model GestroHub.Models.Korisnik
+@{
+    ViewBag.Title = "Osobni podaci";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="mb-4">👤 Osobni podaci</h2>
+
+    <dl class="row">
+        <dt class="col-sm-4">Ime:</dt>
+        <dd class="col-sm-8">@Model.Ime</dd>
+
+        <dt class="col-sm-4">Email:</dt>
+        <dd class="col-sm-8">@Model.Email</dd>
+    </dl>
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary mt-3">Natrag</a>
+</div>
